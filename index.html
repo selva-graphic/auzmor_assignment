@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Auzmor Assignment</title>
+      <!-- Bootstrap -->
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+      <!-- Font Awesome -->
+      <link href="css/font-awesome.min.css" rel="stylesheet">
+      <!-- custom style sheet -->
+      <link rel="stylesheet" href="css/style.css">
+      <!-- fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+   </head>
+   <body>
+      <div class="container">
+         <!-- menu starts here-->
+         <div class="row">
+            <nav class="navbar navbar-default bg-white">
+               <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#"> 
+                  </a>
+               </div>
+               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                     <li class="active"><a href="#home">My Dashboard</a></li>
+                     <li><a href="#">My Accounts</a></li>
+                     <li><a href="#">Benefits</a></li>
+                     <li><a href="#">Offers</a></li>
+                     <li><a href="#">Rewards</a></li>
+                     <li><a href="#">Logout</a></li>
+                  </ul>
+               </div>
+            </nav>
+         </div>
+         <!-- menu ends here-->
+         <!-- header starts here-->
+         <section id="home">
+            <div class="row">
+               <div class="col-sm-3 col-xs-12 user-profile">
+                  <div class="profile-img-container">
+                     <div class="profile-header-img">
+                        <img class="img-circle" src="images/user.jpg" />
+                     </div>
+                  </div>
+                  <article class="user-info">
+                     <div class="user-welcome">Welcome</div>
+                     <h5>SELVA</h5>
+                     <div class="last-login">Last Login: 26 Jan 2018, 12.30 AM</div>
+                     <div class="user-email">Email: seXXXXXXXXXXX@gmail.com </div>
+                     <div class="user-mobile-number">Mobile: XXXXXX9551 </div>
+                  </article>
+               </div>
+               <div class="col-sm-9 col-xs-12 card-details">
+                  <div class="row">
+                     <div class="col-sm-3  col-xs-12">
+                        <h3>My Card</h3>
+                     </div>
+                     <div class="col-sm-9 col-xs-12">
+                        <ul class="nav navbar-nav navbar-right sub-nav">
+                           <li><a href="#"><i class="fa fa-credit-card" aria-hidden="true"></i>Pay bill</a></li>
+                           <li><a href="#"><i class="fa fa-history" aria-hidden="true"></i>View past history</a></li>
+                           <li><a href="#"><i class="fa fa-exchange" aria-hidden="true"></i> Transfer amount</a></li>
+                        </ul>
+                     </div>
+                     <div class="col-xs-12">
+                        <div class="radio">
+                           <label class="radio-inline">
+                           <input type="radio" name="inlineRadioOptions" id="inlineRadio1" checked="" value="option1">Debit Cards
+                           </label>
+                           <label class="radio-inline">
+                           <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">Credit Cards
+                           </label>
+                        </div>
+                        <form>
+                           <div class="form-group form-inline">
+                              <select class="form-control" id="card_details" onchange="changeCard(this.value)">
+                                 <option value="1100">XXXX-XXXX-XXXX-1100</option>
+                                 <option value="3121">XXXX-XXXX-XXXX-3121</option>
+                              </select>
+                           </div>
+                           <div class="form-group form-inline">
+                              <select id='range_select' class="form-control">
+                                 <option>Current Month</option>
+                              </select>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- header ends here -->
+         <!--body content starts here-->
+         <section id="user-spend">
+            <div class="row bg-white credit-card" style="display:none;">
+               <div class="col-xs-12">
+                  <h3>Your account summary as on 30 Jan2018</h3>
+               </div>
+               <div class="col-sm-6 col-xs-12">
+                  <div class="user-details-block">
+                     <div class="current-outstanding">
+                        <h5>Current Outstanding</h5>
+                        <div class="balance-figures">
+                           Total: $ <span id="current_outstanding"></span> | Unbilled: $ <span id="unbilled"></span>
+                        </div>
+                        <div class="progress">
+                           <div data-percentage="0%" style="width: 50%;" class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-xs-12">
+                  <div class="user-details-block">
+                     <div class="credit-limit">
+                        <h5>Credit Limit</h5>
+                        <div class="balance-figures">
+                           Total: $ <span id="credit_limit"></span> | Available: $ <span id="available"></span>
+                        </div>
+                        <div class="progress">
+                           <div data-percentage="0%" style="width: 60%;" class="progress-bar progress-bar-info" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-xs-12">
+                  <div class="user-details-block">
+                     <div class="current-outstanding">
+                        <h5>Last Month Balance</h5>
+                        <div class="balance-figures">
+                           Total: $ <span id="last_month_balance"></span> | Unbilled: $ <span id="unbilledl"></span>
+                        </div>
+                        <div class="progress">
+                           <div data-percentage="0%" style="width: 40%;" class="progress-bar progress-bar-warning" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-xs-12">
+                  <div class="user-details-block">
+                     <div class="credit-limit">
+                        <h5>Current Month Balance</h5>
+                        <div class="balance-figures">
+                           Total: $ <span id="current_month_balance"></span> | Unbilled: $ <span id="unbilledc"></span>
+                        </div>
+                        <div class="progress">
+                           <div data-percentage="0%" style="width: 20%;" class="progress-bar progress-bar-danger" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row bg-white debit-card">
+               <div class="col-xs-12">
+                  <h3>Your account Balance as on 30 Jan2018</h3>
+               </div>
+               <div class="col-sm-12 col-xs-12">
+                  <div class="table-responsive">
+                     <table class="table table-bordered table-hover">
+                        <thead>
+                           <tr>
+                              <th class="text-center">Total Assets</th>
+                              <th class="text-center">Total Liabilities</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td class="text-center">
+                                 <div class="balance-figures">
+                                    $ <span id="avail_balance"></span> 
+                                 </div>
+                              </td>
+                              <td class="text-center">0</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div class="table-responsive">
+                     <table class="table table-bordered table-hover">
+                        <thead>
+                           <tr>
+                              <th>Currency</th>
+                              <th>All Bank Accounts</th>
+                              <th>All Deposit Accounts</th>
+                              <th>All Demat Accounts</th>
+                              <th>All Loan Accounts</th>
+                              <th> </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td>$</td>
+                              <td>  
+                                 $ <span id="avail_balance2"></span>  
+                              </td>
+                              <td>Not Available</td>
+                              <td>0.00</td>
+                              <td>0.00</td>
+                              <td>
+                                 <div class="statement"><a href="#">Mini</a> | <a href="#"> Detailed Statement</a></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!--body content ends here-->
+         <!--spent graph starts here-->
+         <section id="user-spend-analytics">
+            <div class="row bg-white">
+               <div class="col-xs-12">
+                  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                     <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                           <h4 class="panel-title">
+                              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                              Monthly Expenditure  Chart
+                              </a>
+                           </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="headingOne">
+                           <div class="panel-body">
+                              <div class="row">
+                                 <div id="piechart" class="chart"></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!---Spent Graph Ends here-->
+      </div>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+         google.charts.load('current', {'packages':['corechart']});
+           //google.charts.setOnLoadCallback(drawChart);
+           google.charts.setOnLoadCallback(function () {
+                         drawChart(3220);
+                     });
+           function drawChart(add) {
+               var groceries = (1 * add);
+               var dining = (2 * add);
+               var travel = (3 * add);
+               var fuel = (4 * add);
+               var mobile = (5 * add);
+               console.log('redraw chart'+add);
+             var data = google.visualization.arrayToDataTable([
+               ['Task', 'Hours per Day'],
+               ['Groceries', groceries],
+               ['Dining', dining],
+               ['Travel',  travel],
+               ['Fuel', fuel],
+               ['Mobile Bill',    mobile]
+             ]);
+         
+             var options = {  
+         'is3D':true,
+         'width':800,
+         'height':600,
+         backgroundColor: 'transparent'
+             };
+         
+             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+         
+             google.visualization.events.addListener(chart, 'ready', function () {
+                 var chartid = "piechart";
+                 popupHandler(chart, chartid);
+             });
+                                 
+             chart.draw(data, options);
+         }
+           
+             function popupHandler(chartobj, chartid)
+             {
+                 var btn = document.createElement("BUTTON");
+                 btn.setAttribute("style", "float:right");
+                 // Create a <button> element
+                 //btn.setAttribute("id", "click-me");
+                 btn.onclick = function () {
+                     $('#piechart').dialog('open');
+                 };
+                 var t = document.createTextNode("Zoom");
+                 // Create a text node
+                 btn.appendChild(t);
+                 var foo = document.getElementById(chartid);
+                 //Append the element in page (in span).  
+                 foo.appendChild(btn);
+             }
+      </script>
+      <script src="js/jquery-3.1.0.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/main.js"></script>
+   </body>
+   
+</html>
