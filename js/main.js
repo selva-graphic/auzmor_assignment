@@ -43,29 +43,18 @@ function changeCard(value) {
 $('input[name=inlineRadioOptions]').change(function() {
     $('#range_select').empty();
     $('#card_details').empty();
-    if (this.value == 'option2') {
-        $('.credit-card').css("display", "block");
-        $("#range_select").append('<option>Current Month</option>'); 
-
-    } else {
-        $('.credit-card').css("display", "none");
-        $("#range_select").append('<option>Current Month</option>');
-        $("#range_select").append('<option>Last 6 Months</option>'); 
-    }
-});
-$('input[name=inlineRadioOptions]').change(function() {
-    $('#range_select').empty();
-    $('#card_details').empty();
     if (this.value == 'option1') {
+		$('.credit-card').css("display", "none");
         $('.debit-card').css("display", "block");
         $("#range_select").append('<option>Current Month</option>');
+        $("#range_select").append('<option>Last 6 Months</option>');
         $("#card_details").append('<option value="1100">XXXX-XXXX-XXXX-1100</option>');
         $("#card_details").append('<option value="3121">XXXX-XXXX-XXXX-3121</option>');
 
     } else {
         $('.debit-card').css("display", "none");
+        $('.credit-card').css("display", "block");
         $("#range_select").append('<option>Current Month</option>');
-        $("#range_select").append('<option>Last 6 Months</option>');
         $("#card_details").append('<option value="3220">XXXX-XXXX-XXXX-3220</option>');
         $("#card_details").append('<option value="3110">XXXX-XXXX-XXXX-3110</option>');
         $("#card_details").append('<option value="5220">XXXX-XXXX-XXXX-5220</option>');
